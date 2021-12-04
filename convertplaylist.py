@@ -5,11 +5,14 @@ from urllib.parse import parse_qs
 import json
 import time
 from math import floor
+import sys
 
 spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id = "a8ff171bc7ce4489bba3203ed2c61210", client_secret = "13648f46871d4e1ea186f54c401e5b3a"))
 
-#change url to cmd parameter
-url = "https://open.spotify.com/playlist/7kbekQB77leprglhDsLm10?si=0ff1f5a94304427d"
+
+#url = "https://open.spotify.com/playlist/7kbekQB77leprglhDsLm10?si=0ff1f5a94304427d"
+url = sys.argv[1]
+
 parsed_url = urlparse(url)
 userkey = parse_qs(parsed_url.query)['si'][0]
 playlistkey = parsed_url.path.split("/")[2]
